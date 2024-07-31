@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            background-color: #f5f5f5;
+            margin: 0;
+        }
+
+        .register-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+            margin: auto;
+            /* Center the register card */
+            margin-top: 20px;
+            /* Add some top margin */
+        }
+
+        .register-card h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .register-card .form-control {
+            border-radius: 4px;
+        }
+
+        .register-card .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            width: 100%;
+        }
+
+        .register-card .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004d99;
+        }
+
+        .register-card .social-register {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .register-card .social-register button {
+            margin: 0 5px;
+            background-color: transparent;
+            border: none;
+            color: #999;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .register-card .social-register button:hover {
+            color: #333;
+        }
+
+        .btn-light-blue {
+            background-color: rgba(167, 237, 255, 0.5);
+            border-color: rgba(167, 237, 255, 0.5);
+            color: white;
+        }
+
+        .btn-light-blue:hover {
+            background-color: rgba(167, 237, 255, 0.7);
+            border-color: rgba(167, 237, 255, 0.7);
+            color: white;
+        }
+
+        .custom-navbar {
+            background-color: rgb(0, 89, 124);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm custom-navbar">
+        <div class="container-fluid"> <a class="navbar-brand text-light" href="/">Card Collector</a> <button
+                class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span> </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"> <a class="nav-link text-light" href="/">Home</a> </li>
+                    <li class="nav-item"> <a class="nav-link text-light" href="/addCard">Add new card</a> </li>
+                    <li class="nav-item">
+                        <div class="dropdown"> <a class="nav-link dropdown-toggle text-light" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false"> Categories </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/">All</a></li>
+                                <li><a class="dropdown-item" href="/?category=Pok&eacute;mon">Pokémon</a></li>
+                                <li><a class="dropdown-item" href="/?category=Anime">Anime</a></li>
+                                <li><a class="dropdown-item" href="/?category=Kpop">Kpop</a></li>
+                                <li><a class="dropdown-item" href="/?category=Sports">Sports</a></li>
+                                <li><a class="dropdown-item" href="/?category=Other">Other</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul> <!-- Search form -->
+                <form class="d-flex me-3" action="/search" method="GET"> <input class="form-control me-2" type="search"
+                        placeholder="Search cards..." name="q" aria-label="Search"> <button
+                        class="btn btn-outline-light" type="submit">Search</button> </form> <!-- Login and Register -->
+                <ul class="navbar-nav">
+                    <li class="nav-item me-3"> <button type="button" class="nav-link btn btn-light-blue"
+                            onclick="window.location.href='/login';"> Login </button> </li>
+                    <li class="nav-item"> <button type="button" class="nav-link btn btn-light-blue"
+                            onclick="window.location.href='/register';"> Register </button> </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="register-card">
+            <h2>Register</h2>
+            <form action="/register" method="post">
+                <div class="form-outline mb-4">
+                    <input type="text" name="username" class="form-control" placeholder="Username" required />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="email" name="email" class="form-control" placeholder="Email address" required />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="password" name="password" class="form-control" placeholder="Password" required />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="text" name="phone" class="form-control" placeholder="Phone (optional)" />
+                </div>
+
+                <div class="form-check d-flex justify-content-center mb-4">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" required />
+                    <label class="form-check-label" for="registerCheck"> I have read and agree to the terms </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block mb-3">Sign up</button>
+
+                <div class="text-center">
+                    <p>Already a member? <a href="/login">Login</a></p>
+                    <p>or sign in with:</p>
+                    <div class="social-login">
+                        <a href="https://www.facebook.com/login" target="_blank">
+                            <button type="button">
+                                <img src="/icons/facebook.png" alt="Facebook">
+                            </button>
+                        </a>
+                        <a href="https://accounts.google.com/signin" target="_blank">
+                            <button type="button">
+                                <img src="/icons/google.png" alt="Google">
+                            </button>
+                        </a>
+                        <a href="https://twitter.com/login" target="_blank">
+                            <button type="button">
+                                <img src="/icons/twitter.png" alt="Twitter">
+                            </button>
+                        </a>
+                        <a href="https://github.com/login" target="_blank">
+                            <button type="button">
+                                <img src="/icons/github.png" alt="GitHub">
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

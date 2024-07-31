@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .card-app-title {
+            color: white;
+            position: relative;
+            display: inline-block;
+            padding: 10px;
+            background-color: rgba(167, 237, 255, 0.5);
+            border-radius: 5px;
+        }
+
+        .card-solution-header {
+            color: white;
+            background-color: rgb(0, 89, 124);
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .custom-navbar {
+            background-color: rgb(0, 89, 124);
+        }
+
+        .carousel-indicators {
+            display: none;
+        }
+
+        .custom-carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+        }
+
+        .custom-carousel-indicators div {
+            background-color: #fff;
+            border-radius: 2px;
+            height: 4px;
+            width: 20px;
+            margin: 0 4px;
+            transition: background-color 0.3s;
+        }
+
+        .custom-carousel-indicators .active {
+            background-color: #000;
+        }
+
+        .carousel-inner img {
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .card-img-top {
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .btn-light-blue {
+            background-color: rgba(167, 237, 255, 0.5);
+            border-color: rgba(167, 237, 255, 0.5);
+            color: white;
+        }
+
+        .btn-light-blue:hover {
+            background-color: rgba(167, 237, 255, 0.7);
+            border-color: rgba(167, 237, 255, 0.7);
+            color: white;
+        }
+    </style>
+    <title>Card Collector</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm custom-navbar">
+        <div class="container-fluid"> <a class="navbar-brand text-light" href="/">Card Collector</a> <button
+                class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span> </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"> <a class="nav-link text-light" href="/">Home</a> </li>
+                    <li class="nav-item"> <a class="nav-link text-light" href="/addCard">Add new card</a> </li>
+                    <li class="nav-item">
+                        <div class="dropdown"> <a class="nav-link dropdown-toggle text-light" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false"> Categories </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/">All</a></li>
+                                <li><a class="dropdown-item" href="/?category=Pok&eacute;mon">Pokémon</a></li>
+                                <li><a class="dropdown-item" href="/?category=Anime">Anime</a></li>
+                                <li><a class="dropdown-item" href="/?category=Kpop">Kpop</a></li>
+                                <li><a class="dropdown-item" href="/?category=Sport">Sport</a></li>
+                                <li><a class="dropdown-item" href="/?category=Other">Other</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul> <!-- Search form -->
+                <form class="d-flex me-3" action="/search" method="GET"> <input class="form-control me-2" type="search"
+                        placeholder="Search cards..." name="q" aria-label="Search"> <button
+                        class="btn btn-outline-light" type="submit">Search</button> </form> <!-- Login and Register -->
+                <ul class="navbar-nav">
+                    <li class="nav-item me-3"> <button type="button" class="nav-link btn btn-light-blue"
+                            onclick="window.location.href='/login';"> Login </button> </li>
+                    <li class="nav-item"> <button type="button" class="nav-link btn btn-light-blue"
+                            onclick="window.location.href='/register';"> Register </button> </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <br>
+        <div class="text-center">
+            <h2 class="card-app-title">Card Collector</h2>
+        </div>
+
+        <!-- Display selected category as header -->
+        <div class="text-center card-solution-header">
+            <% if (category) { %>
+                <h3><%= category %> Cards</h3>
+            <% } else { %>
+                <h3>All Cards</h3>
+            <% } %>
+            <p>Explore our collection and manage your cards with ease.</p>
+        </div>
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <ul class="carousel-indicators">
+                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+            </ul>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100"
+                        src="https://preview.redd.it/i-combined-some-of-most-of-the-relation-cards-or-cards-that-v0-42csn1wdhkjb1.png?width=2105&format=png&auto=webp&s=c7c2dd3f6c8e421371c14223467de4eb34fdc398"
+                        alt="First slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100"
+                        src="https://cardotaku.com/cdn/shop/files/D2SC02934_5d23f13d-52bf-46a4-a6b1-8a36a53bf8cc.png?v=1613674581&width=2000"
+                        alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100"
+                        src="https://i.pinimg.com/736x/e1/95/ca/e195ca442afe63628e1346f6b4706a7a.jpg" alt="Third slide">
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </a>
+            <!-- Custom indicators -->
+            <div class="custom-carousel-indicators">
+                <div class="active" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"></div>
+                <div data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></div>
+                <div data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <% for(let i=0; i < cards.length; i++) { %>
+                <div class="col-md-4 mb-4">
+                    <div class="card custom-card" style="width: 100%;">
+                        <a href="/card/<%= cards[i].cardId %>" class="card-link">
+                            <img class="card-img-top" src="/images/<%= cards[i].image %>"
+                                alt="<%= cards[i].cardName %>">
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <p class="card-text">
+                                    <%= cards[i].cardName %>
+                                </p>
+                            </h5>
+                            <p class="card-text">Edition: <%= cards[i].edition %>
+                            </p>
+                            <p class="card-text">Category: <%= cards[i].category %>
+                            </p>
+                            <p class="card-text">Value: $<%= Number(cards[i].value).toFixed(2) %>
+                            </p>
+                        </div>
+                        <ul class="list-group list-group-flush custom-list-group">
+                            <li class="list-group-item custom-list-item">Quantity: <%= cards[i].quantity %>
+                            </li>
+                        </ul>
+                        <div class="card-body">
+                            <a href="/editCard/<%= cards[i].cardId %>" class="card-link">Edit</a>
+                            <a href="/deleteCard/<%= cards[i].cardId %>" class="card-link"
+                                onclick="return confirm('Are you sure you want to delete this card?')">Delete</a>
+                        </div>
+                    </div>
+                </div>
+                <% if ((i + 1) % 3 === 0) { %>
+                    </div><div class="row">
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>

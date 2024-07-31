@@ -1,0 +1,60 @@
+<!-- category.ejs or search.ejs -->
+<html lang="en">
+
+<head>
+    <!-- Meta tags and stylesheets -->
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm custom-navbar">
+        <!-- Navbar content -->
+    </nav>
+
+    <div class="container">
+        <div class="text-center">
+            <h2 class="card-app-title">Card Collector</h2>
+        </div>
+
+        <!-- Display selected category as header -->
+        <div class="text-center card-solution-header">
+            <h3><%= category %> Cards</h3>
+            <p>Explore our collection and manage your cards with ease.</p>
+        </div>
+
+        <!-- Filter and search form -->
+        <div class="row">
+            <div class="col-md-4">
+                <!-- Mini search form -->
+                <form action="/search" method="GET">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Search cards..." name="q">
+                        <button class="btn btn-outline-primary" type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-8">
+                <!-- Filter for range of values -->
+                <form action="/filter" method="GET">
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" placeholder="Min Value" name="minValue">
+                        <input type="number" class="form-control" placeholder="Max Value" name="maxValue">
+                        <button class="btn btn-outline-primary" type="submit">Filter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Display filtered cards -->
+        <div class="row">
+            <% for(let i=0; i < cards.length; i++) { %>
+                <div class="col-md-4 mb-4">
+                    <div class="card custom-card" style="width: 18rem;">
+                        <!-- Card details -->
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>

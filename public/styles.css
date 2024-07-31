@@ -1,0 +1,47 @@
+
+body {
+    background-image: url('/images/background.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.5); /* 70% transparent white overlay */
+}
+/* Custom card background color */
+.custom-card {
+    background-color: #8bd9be; /* Example background color */
+    border-radius: 8px; /* Optional: Add rounded corners for a softer look */
+    padding: 15px; /* Optional: Adjust padding for inner content */
+}
+
+.custom-list-group {
+    /* Optional: Adjust padding or margin as needed */
+    padding: 0;
+    margin: 0;
+}
+
+.custom-list-item {
+    background-color: #8bd9be; /* Example background color */
+    padding: 10px; /* Adjust padding for inner content */
+    margin-bottom: 5px; /* Optional: Add margin between list items */
+}
+
+.card-body .card-link {
+    color: #8bd9be; /* Text color */
+    background-color: rgba(0, 89, 124, 0.8); /* Button background color */
+    padding: 5px 10px; /* Padding around the text */
+    border-radius: 5px; /* Rounded corners */
+    margin-right: 5px; /* Space between buttons */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.card-body .card-link:hover {
+    background-color: rgba(0, 89, 124, 1); /* Darker background on hover */
+}
+
+.custom-card:hover {
+    background-color: rgba(4, 247, 255, 0.4);
+}

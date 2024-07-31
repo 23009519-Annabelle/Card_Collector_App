@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Additional CSS styles specific to search page */
+
+        /* Navbar color */
+        .custom-navbar {
+            background-color: rgb(0, 89, 124); /* Adjust as needed */
+        }
+
+        /* Card background color */
+        .custom-card {
+            background-color: #8bd9be; /* Adjust to full green with transparency */
+            border: 1px solid rgba(102, 204, 0, 0.5); /* Border color for the card */
+        }
+
+        /* On hover, darken the background color slightly */
+        .custom-card:hover {
+            background-color: rgba(102, 204, 0, 0.4); /* Adjust hover effect as desired */
+        }
+    </style>
+    <title>Card Collector App</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm custom-navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand text-light" href="/">Card Collector App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"> <a class="nav-link text-light" href="/">Home</a> </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="/addCard">Add new card</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Categories
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/">All</a></li>
+                                <li><a class="dropdown-item" href="/?category=Pok&eacute;mon">Pokémon</a></li>
+                                <li><a class="dropdown-item" href="/?category=Anime">Anime</a></li>
+                                <li><a class="dropdown-item" href="/?category=Kpop">Kpop</a></li>
+                                <li><a class="dropdown-item" href="/?category=Sport">Sport</a></li>
+                                <li><a class="dropdown-item" href="/?category=Other">Other</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <!-- Search form -->
+                <form class="d-flex" action="/search" method="GET">
+                    <input class="form-control me-2" type="search" placeholder="Search cards..." name="q" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <br>
+        <div class="text-center text-light">
+            <h2>Search Results for "<%= query %>"</h2>
+        </div>
+        
+        <br>
+        <div class="row">
+            <% if (cards.length === 0) { %>
+                <div class="col-md-12 text-light">
+                    <p>No cards found matching your search criteria.</p>
+                </div>
+            <% } else { %>
+                <% for(let i=0; i < cards.length; i++) { %>
+                    <div class="col-md-4 mb-4">
+                        <div class="card custom-card" style="width: 18rem;">
+                            <a href="/card/<%= cards[i].cardId %>">
+                                <img class="card-img-top" src="/images/<%= cards[i].image %>" alt="<%= cards[i].cardName %>">
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= cards[i].cardName %>
+                                </h5>
+                                <p class="card-text">Edition: <%= cards[i].edition %></p>
+                                <p class="card-text">Category: <%= cards[i].category %></p>
+                                <p class="card-text">Value: $<%= Number(cards[i].value).toFixed(2) %></p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Quantity: <%= cards[i].quantity %></li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="/editCard/<%= cards[i].cardId %>" class="card-link">Edit</a>
+                                <a href="/deleteCard/<%= cards[i].cardId %>" class="card-link" onclick="return confirm('Are you sure you want to delete this card?')">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+            <% } %>
+        </div>
+    </div>
+</body>
+
+</html>
