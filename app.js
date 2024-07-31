@@ -24,10 +24,14 @@ const upload = multer({ storage: storage });
 
 // Create MySQL connection
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'c237_cardcollectorapp'
+    // host: 'localhost',
+    // user: 'root',
+    // password: '',
+    // database: 'c237_cardcollectorapp'
+    host: 'db4free.net',
+    user: 'annabelle',
+    password: 'AnnabelleCardApp',
+    database: 'cardcollectorapp'
 });
 
 // Connect to database
