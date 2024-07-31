@@ -28,10 +28,10 @@ const connection = mysql.createConnection({
     // user: 'root',
     // password: '',
     // database: 'c237_cardcollectorapp'
-    host: 'db4free.net',
-    user: 'annabelle',
-    password: 'AnnabelleCardApp',
-    database: 'cardcollectorapp'
+    host: 'sql.freedb.tech',
+    user: 'freedb_annabelle',
+    password: 'm3Pc@&*p?k?uR*n',
+    database: 'freedb_cardcollectorapp'
 });
 
 // Connect to database
