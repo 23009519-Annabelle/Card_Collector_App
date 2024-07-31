@@ -31,8 +31,7 @@ const connection = mysql.createConnection({
     host: 'sql.freedb.tech',
     user: 'freedb_annabelle',
     password: 'm3Pc@&*p?k?uR*n',
-    database: 'freedb_cardcollectorapp',
-    port: 3306
+    database: 'freedb_cardcollectorapp'
 });
 
 // Connect to database
