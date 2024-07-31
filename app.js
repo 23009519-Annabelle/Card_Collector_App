@@ -273,5 +273,5 @@ app.get('/category', (req, res) => {
 
 // Listen on port 3000
 app.listen(3000, () => {
-    console.log('Server started on https://c237-card-collector-app.onrender.com');
+    console.log('Server started on http://localhost:3000');
 });
